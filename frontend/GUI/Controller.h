@@ -1,25 +1,22 @@
 #pragma once
 
-#include <view/IView.h>
-#include <view/GUI/ui/MainWindow/MainWindow.h>
-#include <view/GUI/ui/SelectMissionPlan/SelectMissionPlan.h>
+#include <frontend/IFrontend.h>
+#include <frontend/GUI/ui/MainWindow/MainWindow.h>
 
-namespace view::gui
+namespace frontend::gui
 {
     /**
      * @brief This is actually a controller-like class
      */
-    class Controller : public view::IView
+    class Controller : public frontend::IFrontend
     {
     public:
-        Controller();
+        Controller( std::shared_ptr<MainWindow>& pMainWindow );
 
         void show() override;
     private:
-        std::shared_ptr<MainWindow>         mMainWindow;
-        std::shared_ptr<SelectMissionPlan>  mSelectMpDialog;
+        std::shared_ptr<MainWindow> mMainWindow;
 
         void connectWidgets();
-        void launchSelectMpDialog();
     };
 }

@@ -1,5 +1,5 @@
-#include "view/IView.h"
-#include "view/GUI/GUIViewFactory.h"
+#include "frontend/IFrontend.h"
+#include "frontend/GUI/GUIViewFactory.h"
 
 #include <QApplication>
 #include <memory>
@@ -8,9 +8,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    view::gui::GUIViewFactory lViewFactory;
-    std::shared_ptr<view::IView> lView = lViewFactory.createGuiView();
-    lView->show();
+    frontend::gui::GUIFrontendFactory       lFrontendFactory;
+    std::shared_ptr<frontend::IFrontend>    lFrontend       = lFrontendFactory.createGuiFrontend();
+
+    lFrontend->show();
 
     return a.exec();
 }

@@ -1,6 +1,6 @@
 #include "SelectMissionPlan.h"
 
-namespace view::gui
+namespace frontend::gui
 {
     SelectMissionPlan::SelectMissionPlan( QWidget* parent, QAbstractItemModel* pModel ) :
         QDialog( parent ),

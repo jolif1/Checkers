@@ -1,15 +1,15 @@
 #pragma once
 
-#include <view/GUI/Controller.h>
+#include <frontend/GUI/Controller.h>
 
-namespace view::gui
+namespace frontend::gui
 {
-    class GUIViewFactory
+    class GUIFrontendFactory
     {
     public:
-        GUIViewFactory() = default;
+        GUIFrontendFactory() = default;
 
-        std::shared_ptr<Controller> createGuiView();
+        std::shared_ptr<IFrontend> createGuiFrontend();
 
     private:
         QAbstractItemModel* mModel;

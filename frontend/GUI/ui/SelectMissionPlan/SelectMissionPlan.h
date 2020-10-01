@@ -3,7 +3,7 @@
 #include <QDialog>
 #include "ui_SelectMissionPlan.h"
 
-namespace view::gui
+namespace frontend::gui
 {
     class SelectMissionPlan : public QDialog
     {

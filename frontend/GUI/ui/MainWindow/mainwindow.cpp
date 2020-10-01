@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-namespace view::gui
+namespace frontend::gui
 {
     MainWindow::MainWindow(QWidget *parent) :
         QMainWindow(parent),
@@ -15,6 +15,6 @@ namespace view::gui
 
     void MainWindow::connectWidgets()
     {
-        QObject::connect( ui->mSelectMPBtn, &QPushButton::clicked, [this](){ emit selectMissionPlanClicked(); } );
+
     }
 }

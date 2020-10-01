@@ -3,7 +3,7 @@
 #include <QMainWindow>
 #include "ui_mainwindow.h"
 
-namespace view::gui
+namespace frontend::gui
 {
     class MainWindow : public QMainWindow
     {

@@ -1,14 +1,14 @@
 #pragma once
 
-namespace view
+namespace frontend
 {
-    class IView
+    class IFrontend
     {
     public:
-        virtual ~IView() = default;
+        virtual ~IFrontend() = default;
 
         /**
-         * @brief Take the QWidget paradigm. This starts the GUI.
+         * @brief Take the QWidget paradigm. This starts the Frontend.
          */
         virtual void show() = 0;
     private:

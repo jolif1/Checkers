@@ -1,17 +1,14 @@
 #include "GUIViewFactory.h"
 
-#include <qtable
 #include "ui/MainWindow/MainWindow.h"
-#include "ui/SelectMissionPlan/SelectMissionPlan.h"
 
-namespace view::gui
+namespace frontend::gui
 {
-    std::shared_ptr<GUIView> GUIViewFactory::createGuiView()
+    std::shared_ptr<IFrontend> GUIFrontendFactory::createGuiFrontend()
     {
 
         auto lMainWindow    = std::make_shared<MainWindow>();
-        auto lSelectMp      = std::make_shared<SelectMissionPlan>( static_cast<QWidget*>( lMainWindow.get() ), mModel);
-        auto lController    = std::make_shared<GUIView>( lMainWindow, lSelectMp );
+        auto lController    = std::make_shared<Controller>( lMainWindow );
 
 
         return lController;
