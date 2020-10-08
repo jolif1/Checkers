@@ -1,2 +1,2 @@
-add_subdirectory(MainWindow)
-#add_subdirectory(SelectMissionPlan)
+add_subdirectory( MainWindow )
+add_subdirectory( Board )

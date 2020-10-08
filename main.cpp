@@ -1,5 +1,5 @@
 #include "frontend/IFrontend.h"
-#include "frontend/GUI/GUIViewFactory.h"
+#include "frontend/GUI/GUIFrontendFactory.h"
 
 #include <QApplication>
 #include <memory>

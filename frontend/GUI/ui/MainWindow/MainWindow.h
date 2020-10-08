@@ -10,16 +10,16 @@ namespace frontend::gui
         Q_OBJECT
 
     public:
-        MainWindow(QWidget *parent = nullptr);
+        MainWindow( QAbstractTableModel* pBoardModel, QWidget *parent = nullptr );
         ~MainWindow() = default;
 
     signals:
-        void selectMissionPlanClicked();
 
     private:
-        std::shared_ptr<Ui::MainWindow> ui;
+        std::shared_ptr<Ui::MainWindow>         ui;
 
         void connectWidgets();
+        void setBoardModel( QAbstractTableModel* pBoardModel );
     };
 }
 

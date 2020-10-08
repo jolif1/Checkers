@@ -1,7 +1,8 @@
 #pragma once
 
 #include <frontend/IFrontend.h>
-#include <frontend/GUI/ui/MainWindow/MainWindow.h>
+#include "ui/MainWindow/MainWindow.h"
+#include "model/ViewModel.h"
 
 namespace frontend::gui
 {
@@ -11,11 +12,12 @@ namespace frontend::gui
     class Controller : public frontend::IFrontend
     {
     public:
-        Controller( std::shared_ptr<MainWindow>& pMainWindow );
+        Controller( std::shared_ptr<MainWindow>& pMainWindow, std::shared_ptr<ViewModel>& pModel );
 
         void show() override;
     private:
         std::shared_ptr<MainWindow> mMainWindow;
+        std::shared_ptr<ViewModel> mModel;
 
         void connectWidgets();
     };

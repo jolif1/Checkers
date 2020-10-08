@@ -4,8 +4,8 @@
 
 namespace frontend::gui
 {
-    Controller::Controller( std::shared_ptr<MainWindow>& pMainWindow ) :
-        mMainWindow { pMainWindow }
+    Controller::Controller( std::shared_ptr<MainWindow>& pMainWindow, std::shared_ptr<ViewModel>& pModel ) :
+        mMainWindow { pMainWindow }, mModel( pModel )
     {
         connectWidgets();
     }
