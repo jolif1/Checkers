@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/Board/Nikita_Gobulev_blue.png</file>
+        <file>ui/Board/Nikita_Gobulev_brown.png</file>
+        <file>ui/Board/Nikita_Gobulev_white.png</file>
+    </qresource>
+</RCC>
