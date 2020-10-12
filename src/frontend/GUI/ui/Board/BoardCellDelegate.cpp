@@ -7,8 +7,9 @@ namespace frontend::gui
 {
     BoardCellDelegate::BoardCellDelegate()
     {
-        mWhiteChecker = std::make_shared<QPixmap>(":/frontend/GUI/ui/CheckerDelegate/Nikita_Gobulev_white.png");
-        mBlackChecker = std::make_shared<QPixmap>(":/frontend/GUI/ui/CheckerDelegate/Nikita_Gobulev_brown.png");
+        mWhiteChecker = std::make_shared<QPixmap>(":/ui/Board/Nikita_Gobulev_white.png");
+        mBlackChecker = std::make_shared<QPixmap>(":/ui/Board/Nikita_Gobulev_brown.png");
+        /*TODO: unit-test pixmaps validity */
     }
 
     void BoardCellDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -33,11 +34,13 @@ namespace frontend::gui
         // paint the checker, if any is present.
         if( lCheckerColor.isValid() )
         {
-            auto lColor = lCheckerColor.value<QColor>();
+            auto lColor = lCheckerColor.toInt();
 
-            if( Qt::white == lColor.value() )
+            /* TODO:: unit test cast of QVariant to QColor --> pbbly Viewmodel*/
+
+            if( Qt::white == lColor )
                 painter->drawPixmap( option.rect, *mWhiteChecker );
-            if( Qt::black == lColor.value() )
+            if( Qt::black == lColor )
                 painter->drawPixmap( option.rect, *mBlackChecker );
         }
     }

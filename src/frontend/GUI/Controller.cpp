@@ -13,6 +13,12 @@ namespace frontend::gui
     void Controller::show()
     {
         mMainWindow->show();
+        this->requestNewGame();
+    }
+
+    void Controller::add( const domain::CheckerPtr& pChecker )
+    {
+        mModel->addChecker( pChecker );
     }
 
     void Controller::connectWidgets()

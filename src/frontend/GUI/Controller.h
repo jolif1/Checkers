@@ -15,9 +15,11 @@ namespace frontend::gui
         Controller( std::shared_ptr<MainWindow>& pMainWindow, std::shared_ptr<ViewModel>& pModel );
 
         void show() override;
+        void add( const domain::CheckerPtr& pChecker ) override;
+
     private:
         std::shared_ptr<MainWindow> mMainWindow;
-        std::shared_ptr<ViewModel> mModel;
+        std::shared_ptr<ViewModel>  mModel;
 
         void connectWidgets();
     };

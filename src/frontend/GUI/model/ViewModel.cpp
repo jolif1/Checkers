@@ -9,7 +9,9 @@ namespace frontend::gui
 
     void ViewModel::addChecker( const CheckerPtr& pPtr )
     {
+        beginResetModel();
         mCheckers.insert( { pPtr->getPosition(), pPtr } );
+        endResetModel();
     }
 
     int ViewModel::rowCount( [[maybe_unused]] const QModelIndex &parent ) const
@@ -28,8 +30,8 @@ namespace frontend::gui
 
         if( index.isValid() )
         {
-            int     lRow { index.row() };
-            int     lCol { index.column() };
+            int lRow { index.row() };
+            int lCol { index.column() };
 
             if( Qt::DisplayRole == role )
             {
@@ -38,9 +40,9 @@ namespace frontend::gui
                 if( mCheckers.end() != it )
                 {
                     if( mCheckers.at( { lRow, lCol } )->getTeam() == Checker::Team::White )
-                        lRet = QColor( Qt::white );
+                        lRet = QVariant( QColor( Qt::white ) );
                     else
-                        lRet = QColor( Qt::black );
+                        lRet = QVariant::fromValue<int>( Qt::black );
                 }
             }
         }
