@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QAbstractItemDelegate>
-//#include <map>
 
 namespace frontend::gui
 {

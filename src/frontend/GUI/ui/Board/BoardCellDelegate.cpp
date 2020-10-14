@@ -24,7 +24,7 @@ namespace frontend::gui
         else
             lCellBrush = QBrush( Qt::darkBlue );
 
-        if( ( option.state & QStyle::State_Selected ) && lIsWhiteCell )
+        if( ( option.state & QStyle::State_Selected ) && !lIsWhiteCell )
         {
             lCellBrush.setColor( lCellBrush.color().lighter() );
         }
@@ -34,19 +34,21 @@ namespace frontend::gui
         // paint the checker, if any is present.
         if( lCheckerColor.isValid() )
         {
-            auto lColor = lCheckerColor.toInt();
+            auto    lColor      { lCheckerColor.toInt() };
+            QPixmap lImageToDraw;
 
             /* TODO:: unit test cast of QVariant to QColor --> pbbly Viewmodel*/
-
             if( Qt::white == lColor )
-                painter->drawPixmap( option.rect, *mWhiteChecker );
+                lImageToDraw = mWhiteChecker->scaled(50, 50);
             if( Qt::black == lColor )
-                painter->drawPixmap( option.rect, *mBlackChecker );
+                lImageToDraw = mBlackChecker->scaled(50, 50);
+
+            painter->drawPixmap( option.rect, lImageToDraw );
         }
     }
 
     QSize BoardCellDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
-        return QSize( 64, 64 );
+        return QSize( 50, 50 );
     }
 }

@@ -20,4 +20,6 @@ namespace frontend::adapters
         IFrontendPtr mFrontend;
 
     };
+
+    typedef std::shared_ptr<LocalAdapter> LocalAdapterPtr;
 }

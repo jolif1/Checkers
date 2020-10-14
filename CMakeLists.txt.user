@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.1, 2020-10-10T10:35:20. -->
+<!-- Written by QtCreator 4.13.1, 2020-10-13T19:38:41. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -64,7 +64,15 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:PositionTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:comparison_operators">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:constructors_and_getters">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/BoardCellDelegateTest.cpp:BoardCellDelegateTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/BoardCellDelegateTest.cpp:HelloTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/adapters/LocalAdapterTest.cpp:LocalAdapterTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/adapters/LocalAdapterTest.cpp:newgame">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">

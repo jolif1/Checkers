@@ -22,5 +22,6 @@ namespace domain
     };
 
     bool operator==( const domain::Position& lhs, const domain::Position& rhs );
+    bool operator!=( const domain::Position& lhs, const domain::Position& rhs );
     bool operator<( const domain::Position& lhs, const domain::Position& rhs );
 }

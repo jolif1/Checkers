@@ -13,19 +13,19 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 message("--- Adding targets.")
+message("---- Adding local application target")
 add_library( domain )
 add_executable( Checkers main.cpp )
-set( Checkers_libs "Qt${QT_VERSION_MAJOR}::Widgets" )
-target_link_libraries(Checkers PUBLIC domain PRIVATE ${Checkers_libs})
+set( Checkers_libs "PUBLIC" "domain" "PRIVATE" "Qt${QT_VERSION_MAJOR}::Widgets" )
+target_link_libraries(Checkers ${Checkers_libs})
 
-message("--- Configuring Google Test")
-#include(GoogleTest) #Not sure this is actually usefull
-find_package(GTest REQUIRED)
+message("---- Adding unit test target")
+#This is somewhat really GTest-like but its nice not to have to include all sources in test/ folder CMakeLists
+#Note that defining the target here & adding/linking sources in subfolders only works with cmake 3.13 & higher
 set( UNIT_TESTS_EXECUTABLE "UnitTests" )
-include_directories( ${GTEST_INCLUDE_DIRS} )
-add_executable( ${UNIT_TESTS_EXECUTABLE} unit_test_main.cpp)
-target_link_libraries( ${UNIT_TESTS_EXECUTABLE} PRIVATE ${Checkers_libs} ${GTEST_BOTH_LIBRARIES})
-#gtest_discover_tests()
+
+add_executable( ${UNIT_TESTS_EXECUTABLE} )
+target_link_libraries( ${UNIT_TESTS_EXECUTABLE} PUBLIC ${Checkers_libs})
 
 message("--- Processing subdirectories.")
 #sources are added to the target in the subfolders
@@ -33,6 +33,7 @@ add_subdirectory( application )
 add_subdirectory( communication )
 add_subdirectory( domain )
 add_subdirectory( frontend )
+add_subdirectory( test )
 
 
 
