@@ -1,0 +1,15 @@
+message("--- Configuring Google Test")
+#include(GoogleTest) #Not sure this is actually usefull
+find_package(GTest REQUIRED)
+target_include_directories( ${UNIT_TESTS_EXECUTABLE} PRIVATE ${GTEST_INCLUDE_DIRS} )
+message("GMOCK LIBS = ${GMOCK_BOTH_LIBRARIES}")
+message("GTEST LIBS = ${GTEST_BOTH_LIBRARIES}")
+#somehow GTest doesn't include link targets for GMock yet. I don't want to pull the code from CMake either.
+target_link_directories( ${UNIT_TESTS_EXECUTABLE} PUBLIC "${GTEST_ROOT}/lib" )
+target_link_libraries( ${UNIT_TESTS_EXECUTABLE} PUBLIC gtest gtest_main gmock gmock_main )
+target_sources( ${UNIT_TESTS_EXECUTABLE} PUBLIC unit_test_main.cpp )
+#gtest_discover_tests()
+
+message("--- Iterating subdirectories")
+add_subdirectory(frontend)
+add_subdirectory(domain)
