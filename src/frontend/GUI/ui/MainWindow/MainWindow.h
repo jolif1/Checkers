@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-#include "ui_mainwindow.h"
+#include "ui_MainWindow.h"
 
 namespace frontend::gui
 {
