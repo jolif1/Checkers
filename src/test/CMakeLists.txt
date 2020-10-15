@@ -8,6 +8,7 @@ target_link_libraries( ${UNIT_TESTS_EXECUTABLE} PUBLIC gtest gtest_main gmock gm
 target_sources( ${UNIT_TESTS_EXECUTABLE} PUBLIC unit_test_main.cpp )
 #gtest_discover_tests()
 
-message("--- Iterating subdirectories")
+message("--- Iterating frontend tests")
 add_subdirectory(frontend)
+message("--- Iterating domain tests")
 add_subdirectory(domain)
