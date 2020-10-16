@@ -42,7 +42,7 @@ jobs:
     - name: Install Google Test Package
       shell: bash
       run: sudo apt-get install -y googletest cmake;
-           cd /usr/src/googletest/; sudo mkdir build; sudo cd build; sudo cmake ..; make -j 17 all install; 
+           cd /usr/src/googletest/; sudo mkdir build; cd build; sudo cmake ..; sudo make -j 17 all install; 
       #TODO: platform-independant
 
     - name: Create Build Environment
