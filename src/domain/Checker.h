@@ -29,5 +29,6 @@ namespace domain
         Team        mTeam;
     };
 
-    typedef std::shared_ptr<Checker> CheckerPtr;
+    typedef std::shared_ptr< Checker > CheckerPtr;
+    bool operator==( const CheckerPtr& lhs, const CheckerPtr& rhs );
 }

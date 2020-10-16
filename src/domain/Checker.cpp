@@ -7,4 +7,9 @@ namespace domain
     {
 
     }
+
+    bool operator==( const CheckerPtr& lhs, const CheckerPtr& rhs )
+    {
+       return ( lhs->getPosition() == rhs->getPosition() ) && ( lhs->getTeam() == rhs->getTeam() );
+    }
 }

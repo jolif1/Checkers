@@ -28,33 +28,29 @@ namespace frontend::adapters::test {
 
     TEST_F(LocalAdapterTest, newgame)
     {
-        std::set<Position> lInitBlackCheckersPositions {
-            Position( 0, 1 ),
-            Position( 0, 3 ),
-            Position( 0, 5 ),
-            Position( 0, 7 ),
-            Position( 0, 9 ),
-            Position( 1, 0 ),
-            Position( 1, 2 ),
-            Position( 1, 4 ),
-            Position( 1, 6 ),
-            Position( 1, 8 ),
-            Position( 2, 1 ),
-            Position( 2, 3 ),
-            Position( 2, 5 ),
-            Position( 2, 7 ),
-            Position( 2, 9 )
+        std::vector<CheckerPtr> lInitBlackCheckers {
+            std::make_shared<Checker>( Position( 0, 1 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 0, 3 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 0, 5 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 0, 7 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 0, 9 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 1, 0 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 1, 2 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 1, 4 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 1, 6 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 1, 8 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 2, 1 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 2, 3 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 2, 5 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 2, 7 ), Checker::Team::Black ),
+            std::make_shared<Checker>( Position( 2, 9 ), Checker::Team::Black )
         };
 
-        std::set<Position> lBlackCheckersPositions;
-
-        for( int i=0; i<15; i++ )
+        for( auto it = lInitBlackCheckers.begin(); it != lInitBlackCheckers.end(); it++ )
         {
-            EXPECT_CALL(*mMockPtr, add).WillRepeatedly( [&lBlackCheckersPositions](const CheckerPtr& ptr){lBlackCheckersPositions.insert(ptr->getPosition());} );
+            EXPECT_CALL(*mMockPtr, add( *it ));
         }
 
         mLocalAdapter->newGame();
-
-        ASSERT_EQ( lInitBlackCheckersPositions, lBlackCheckersPositions );
     }
 }
