@@ -20,12 +20,12 @@ set( Checkers_libs "PUBLIC" "domain" "PRIVATE" "Qt${QT_VERSION_MAJOR}::Widgets" 
 target_link_libraries(Checkers ${Checkers_libs})
 
 message("---- Adding unit test target")
-#This is somewhat really GTest-like but its nice not to have to include all sources in test/ folder CMakeLists
-#Note that defining the target here & adding/linking sources in subfolders only works with cmake 3.13 & higher
+#TODO: get rid of the GTest-specific stuff. --> move it to the test subdirectory
 set( UNIT_TESTS_EXECUTABLE "UnitTests" )
-
 add_executable( ${UNIT_TESTS_EXECUTABLE} )
 target_link_libraries( ${UNIT_TESTS_EXECUTABLE} PUBLIC ${Checkers_libs})
+include(GoogleTest)
+gtest_discover_tests( ${UNIT_TESTS_EXECUTABLE} )
 
 message("--- Processing subdirectories.")
 #sources are added to the target in the subfolders
