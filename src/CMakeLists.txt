@@ -49,5 +49,4 @@ include(CTest)
 include(GoogleTest)
 add_subdirectory( test )
 gtest_discover_tests( ${UNIT_TESTS_EXECUTABLE} )
-message("d: unit test targets is ${${UNIT_TESTS_EXECUTABLE}_targets}")
 
