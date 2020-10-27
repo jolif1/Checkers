@@ -13,6 +13,8 @@ namespace frontend::gui
         MainWindow( QAbstractTableModel* pBoardModel, QWidget *parent = nullptr );
         ~MainWindow() = default;
 
+        QItemSelectionModel* getSelectionModel() { return ui->mBoardTable->selectionModel(); }
+
     signals:
 
     private:

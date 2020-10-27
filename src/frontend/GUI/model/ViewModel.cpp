@@ -9,6 +9,12 @@ namespace frontend::gui
     using domain::Checker;
     using domain::CheckerPtr;
 
+    ViewModel::ViewModel( const SelectionModelPtr& pSelectionModel ) :
+        mSelectionModel( pSelectionModel )
+    {
+
+    }
+
     void ViewModel::addChecker( const CheckerPtr& pPtr )
     {
         beginResetModel();

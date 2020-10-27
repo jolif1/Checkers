@@ -45,7 +45,7 @@ namespace frontend::gui
             auto    lColor      { lCheckerColor.toInt() };
             QPixmap lImageToDraw;
 
-            /* TODO:: unit test cast of QVariant to QColor --> pbbly Viewmodel*/
+            /* TODO:: unit test cast of QVariant to QColor --> pbbly Viewmodel */
             if( Qt::white == lColor )
                 lImageToDraw = mWhiteChecker->scaled(50, 50);
             if( Qt::black == lColor )

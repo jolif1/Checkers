@@ -1,16 +1,25 @@
 #pragma once
 
 #include <QAbstractTableModel>
+#include <QItemSelectionModel>
 #include <domain/Checker.h>
 #include <map>
 
 namespace frontend::gui
 {
+    typedef std::shared_ptr<QItemSelectionModel> SelectionModelPtr;
+
     class ViewModel : public QAbstractTableModel
     {
     public:
+        ViewModel( const SelectionModelPtr& pSelectionModel );
 
+        /**
+         * @brief Game related functionnality
+         */
+        ///@{
         void addChecker( const domain::CheckerPtr& pPtr );
+        ///@}
 
         /**
          * @brief QAbstractTableModel functionnality
@@ -23,6 +32,8 @@ namespace frontend::gui
         ///@}
 
     private:
+
         domain::IndexedCheckers mCheckers;
+        SelectionModelPtr       mSelectionModel;
     };
 }
