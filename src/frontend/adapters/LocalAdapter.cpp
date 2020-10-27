@@ -12,14 +12,19 @@ namespace frontend::adapters
 
     }
 
-    void LocalAdapter::add( [[maybe_unused]] const domain::CheckerPtr& pChecker )
+    void LocalAdapter::add( const domain::CheckerPtr& pChecker )
     {
-        /* frontend won't ever call this */
+        mFrontend->add( pChecker );
+    }
+
+    void LocalAdapter::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    {
+        /* Called from frontend --> going to the app layer */
     }
 
     void LocalAdapter::move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
     {
-
+        /* Called from the app or comm layer --> going to the frontend */
     }
 
     void LocalAdapter::remove( [[maybe_unused]] const domain::CheckerPtr& pChecker )
@@ -29,15 +34,6 @@ namespace frontend::adapters
 
     void LocalAdapter::newGame()
     {
-        //Create Checkers. We play on the black tiles & top-left tile is white (0,0)
-        //Create Black Checkers
-        for( int i = 0; i < 3 ; i++ )
-        {
-            for( int j = ((i+1)%2); j < 10; j+=2 )
-            {
-                CheckerPtr lChecker = std::make_shared<Checker>( Position( i, j ), Checker::Team::Black );
-                mFrontend->add( lChecker );
-            }
-        }
+        mAppAdapter->newGame();
     }
 }

@@ -1,9 +1,11 @@
 #include "ViewModel.h"
 
+#include <domain/Board.h>
 #include <QBrush>
 
 namespace frontend::gui
 {
+    using domain::Board;
     using domain::Checker;
     using domain::CheckerPtr;
 
@@ -16,12 +18,12 @@ namespace frontend::gui
 
     int ViewModel::rowCount( [[maybe_unused]] const QModelIndex &parent ) const
     {
-        return kRowCount;
+        return Board::kNumberOfRows;
     }
 
     int ViewModel::columnCount( [[maybe_unused]] const QModelIndex &parent ) const
     {
-        return kColCount;
+        return Board::kNumberOfColumns;
     }
 
     QVariant ViewModel::data( const QModelIndex &index, int role ) const

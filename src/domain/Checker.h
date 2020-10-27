@@ -2,6 +2,7 @@
 
 #include "Position.h"
 #include <memory>
+#include <map>
 
 namespace domain
 {
@@ -30,5 +31,7 @@ namespace domain
     };
 
     typedef std::shared_ptr< Checker > CheckerPtr;
+    typedef std::map<domain::Position, domain::CheckerPtr> IndexedCheckers;
+
     bool operator==( const CheckerPtr& lhs, const CheckerPtr& rhs );
 }

@@ -23,11 +23,6 @@ namespace frontend::gui
         ///@}
 
     private:
-        typedef std::map<domain::Position, domain::CheckerPtr> IndexedCheckers;
-
-        static constexpr int    kRowCount { 10 };
-        static constexpr int    kColCount { 10 };
-
-        IndexedCheckers         mCheckers;
+        domain::IndexedCheckers mCheckers;
     };
 }

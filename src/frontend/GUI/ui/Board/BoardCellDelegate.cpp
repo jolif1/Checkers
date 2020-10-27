@@ -1,5 +1,6 @@
 #include "BoardCellDelegate.h"
 
+#include <domain/Board.h>
 #include <QPainter>
 #include <QDebug>
 
@@ -10,21 +11,28 @@ namespace frontend::gui
         mWhiteChecker = std::make_shared<QPixmap>(":/ui/Board/Nikita_Gobulev_white.png");
         mBlackChecker = std::make_shared<QPixmap>(":/ui/Board/Nikita_Gobulev_brown.png");
         /*TODO: unit-test pixmaps validity */
+
+        if( domain::Board::kTopLeftCellColor == domain::CellColor::White )
+        {
+            mPairCellBrush = QBrush( Qt::lightGray );
+            mOddCellBrush = QBrush( Qt::darkBlue );
+        }
+        else
+        {
+            mPairCellBrush = QBrush( Qt::darkBlue );
+            mOddCellBrush = QBrush( Qt::lightGray );
+        }
     }
 
     void BoardCellDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
         auto    lCheckerColor  { index.data( Qt::DisplayRole ) };
-        QBrush  lCellBrush     ;
-        bool    lIsWhiteCell   { ( index.row() + index.column() ) % 2 == 0 };
+        bool    lCellIndexPair { ( index.row() + index.column() ) % 2 == 0 }; /* 0 means top-left aligned cell */
+        QBrush  lCellBrush     { lCellIndexPair ? mPairCellBrush : mOddCellBrush };
+
 
         // paint the background
-        if( lIsWhiteCell )
-            lCellBrush = QBrush( Qt::lightGray );
-        else
-            lCellBrush = QBrush( Qt::darkBlue );
-
-        if( ( option.state & QStyle::State_Selected ) && !lIsWhiteCell )
+        if( ( option.state & QStyle::State_Selected ) && !lCellIndexPair )
         {
             lCellBrush.setColor( lCellBrush.color().lighter() );
         }

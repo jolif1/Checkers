@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QAbstractItemDelegate>
+#include <QBrush>
 #include <memory>
 
 namespace frontend::gui
@@ -17,5 +18,7 @@ namespace frontend::gui
     private:
         std::shared_ptr<QPixmap> mWhiteChecker;
         std::shared_ptr<QPixmap> mBlackChecker;
+        QBrush                   mPairCellBrush;
+        QBrush                   mOddCellBrush;
     };
 }
