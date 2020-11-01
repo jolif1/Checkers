@@ -23,6 +23,9 @@ namespace frontend::gui
 
     void Controller::connectWidgets()
     {
+        QObject::connect( mModel.get(), &ViewModel::requestMove, [this](const domain::CheckerPtr& t1, const domain::Position& t2){
+           this->requestMove( t1, t2 );
+        });
     }
 }
 

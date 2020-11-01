@@ -48,5 +48,7 @@ message("---- Adding unit test target")
 include(CTest)
 include(GoogleTest)
 add_subdirectory( test )
-gtest_discover_tests( ${UNIT_TESTS_EXECUTABLE} )
+if( ${EXECUTE_UNIT_TESTS} )
+    gtest_discover_tests( ${UNIT_TESTS_EXECUTABLE} )
+endif()
 

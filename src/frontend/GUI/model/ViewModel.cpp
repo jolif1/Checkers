@@ -8,11 +8,15 @@ namespace frontend::gui
     using domain::Board;
     using domain::Checker;
     using domain::CheckerPtr;
+    using domain::Position;
 
-    ViewModel::ViewModel( const SelectionModelPtr& pSelectionModel ) :
-        mSelectionModel( pSelectionModel )
+    void ViewModel::setSelectionModel( QItemSelectionModel* pSelectionModel )
     {
+        /* TODO: for some reason you can^t create your own SelectionModel & pass it to the board via setSelectionModel.
+           --> looks like the board doesn't really change its selection model (currentChanged is never triggered on the new model */
+        mSelectionModel = pSelectionModel;
 
+        QObject::connect( mSelectionModel, &QItemSelectionModel::currentChanged, this, &ViewModel::onItemSelectionChanged );
     }
 
     void ViewModel::addChecker( const CheckerPtr& pPtr )
@@ -48,7 +52,7 @@ namespace frontend::gui
                 if( mCheckers.end() != it )
                 {
                     if( mCheckers.at( { lRow, lCol } )->getTeam() == Checker::Team::White )
-                        lRet = QVariant( QColor( Qt::white ) );
+                        lRet = QVariant::fromValue<int>( Qt::white );
                     else
                         lRet = QVariant::fromValue<int>( Qt::black );
                 }
@@ -63,4 +67,32 @@ namespace frontend::gui
         return QVariant();
     }
 
+    void ViewModel::onItemSelectionChanged( const QModelIndex& current, const QModelIndex& previous )
+    {
+        Position    lNewPos         { current.row(), current.column() };
+        bool        lCheckerMoved   { false };
+
+        if( previous.isValid() )
+        {
+            //Try to move the Checker, if one is present
+            auto lCheckerIt { mCheckers.find( { previous.row(), previous.column() } ) };
+
+            if( mCheckers.end() != lCheckerIt )
+            {
+                lCheckerMoved = true;
+                emit requestMove( lCheckerIt->second, lNewPos );
+            }
+        }
+
+        if( !lCheckerMoved )
+        {
+            // Show possible moves for currently selected tile
+            auto lCheckerIt { mCheckers.find( lNewPos ) };
+
+            if( mCheckers.end() != lCheckerIt )
+            {
+                emit requestPossibleMoves( lNewPos );
+            }
+        }
+    }
 }

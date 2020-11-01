@@ -7,12 +7,18 @@
 
 namespace frontend::gui
 {
-    typedef std::shared_ptr<QItemSelectionModel> SelectionModelPtr;
-
     class ViewModel : public QAbstractTableModel
     {
+        Q_OBJECT
+
     public:
-        ViewModel( const SelectionModelPtr& pSelectionModel );
+        /**
+         * @brief setSelectionModel
+         * @param pSelectionModel
+         */
+        ///@{
+        void setSelectionModel( QItemSelectionModel* pSelectionModel );
+        ///@}
 
         /**
          * @brief Game related functionnality
@@ -31,9 +37,14 @@ namespace frontend::gui
         QVariant    headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole )  const override;
         ///@}
 
-    private:
+    signals:
+        void requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos );
+        void requestPossibleMoves( const domain::Position& pCheckerPos );
 
+    private:
         domain::IndexedCheckers mCheckers;
-        SelectionModelPtr       mSelectionModel;
+        QItemSelectionModel*    mSelectionModel;
+
+        void onItemSelectionChanged( const QModelIndex& current, const QModelIndex& previous );
     };
 }

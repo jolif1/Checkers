@@ -21,7 +21,6 @@ namespace frontend::gui
         std::shared_ptr<Ui::MainWindow>         ui;
 
         void connectWidgets();
-        void setBoardModel( QAbstractTableModel* pBoardModel );
     };
 }
 

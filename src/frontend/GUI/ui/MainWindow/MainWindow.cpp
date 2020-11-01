@@ -10,17 +10,12 @@ namespace frontend::gui
     {
         ui->setupUi(this);
 
-        setBoardModel( pBoardModel );
+        ui->mBoardTable->setModel( pBoardModel );
         connectWidgets();
     }
 
     void MainWindow::connectWidgets()
     {
 
-    }
-
-    void MainWindow::setBoardModel( QAbstractTableModel* pBoardModel )
-    {
-        ui->mBoardTable->setModel( pBoardModel );
     }
 }
