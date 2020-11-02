@@ -10,6 +10,9 @@ namespace frontend::gui
     public:
         Board( QWidget* pParent = nullptr );
 
+
+        void resizeEvent(QResizeEvent* pEvent) override;
+
     private:
         std::shared_ptr<BoardCellDelegate> mCellDelegate;
     };
