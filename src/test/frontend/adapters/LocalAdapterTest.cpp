@@ -25,34 +25,4 @@ namespace frontend::adapters::test {
         IFrontendPtr    mMockFrontend;
         LocalAdapterPtr mLocalAdapter;
     };
-
-    TEST_F(LocalAdapterTest, newgame)
-    {
-        ASSERT_TRUE(false);
-        //TODO: move this to game test
-//        std::vector<CheckerPtr> lInitBlackCheckers {
-//            std::make_shared<Checker>( Position( 0, 1 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 0, 3 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 0, 5 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 0, 7 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 0, 9 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 1, 0 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 1, 2 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 1, 4 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 1, 6 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 1, 8 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 2, 1 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 2, 3 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 2, 5 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 2, 7 ), Checker::Team::Black ),
-//            std::make_shared<Checker>( Position( 2, 9 ), Checker::Team::Black )
-//        };
-
-//        for( auto it = lInitBlackCheckers.begin(); it != lInitBlackCheckers.end(); it++ )
-//        {
-//            EXPECT_CALL(*mMockPtr, add( *it ));
-//        }
-
-//        mLocalAdapter->newGame();
-    }
 }

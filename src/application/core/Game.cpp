@@ -8,19 +8,37 @@ namespace application::core
     using domain::Board;
     using domain::CheckerPtr;
     using domain::Checker;
+    using domain::CheckerFactoryPtr;
     using domain::Position;
+
+    Game::Game( const CheckerFactoryPtr& pCheckerFactory ) :
+        mCheckerFactory( pCheckerFactory )
+    {
+
+    }
 
     void Game::newGame()
     {
-        //Create Checkers. We play on the black tiles & top-left tile is white (0,0)
-        //Create Black Checkers
+        //Create Black Checkers. Rows 0 -> middle - 1
         for( int i = 0; i < (Board::kNumberOfColumns/2 - 1) ; i++ )
         {
             for( int j = ((i+1)%2); j < Board::kNumberOfRows; j+=2 )
             {
-                CheckerPtr lChecker = std::make_shared<Checker>( Position( i, j ), Checker::Team::Black );
-                mCheckers.insert( { lChecker->getPosition(), lChecker } );
+                auto lChecker { mCheckerFactory->createChecker( Position(i,j), Checker::Team::Black ) };
 
+                mCheckers.insert( { lChecker->getPosition(), lChecker } );
+                added( lChecker );
+            }
+        }
+
+        //Create White Checkers. Rows middle + 1 -> end
+        for( int i = (Board::kNumberOfColumns/2 + 1); i < Board::kNumberOfColumns; i++ )
+        {
+            for( int j = ((i+1)%2); j < Board::kNumberOfRows; j+=2 )
+            {
+                auto lChecker { mCheckerFactory->createChecker( Position(i,j), Checker::Team::White ) };
+
+                mCheckers.insert( { lChecker->getPosition(), lChecker } );
                 added( lChecker );
             }
         }

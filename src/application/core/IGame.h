@@ -25,6 +25,7 @@ namespace application::core
 
         /**
          * @brief Game-related functionnality
+         * TODO: should this really be public ?
          */
         ///@{
         void added( const domain::CheckerPtr& pChecker );

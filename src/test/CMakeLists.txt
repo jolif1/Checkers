@@ -14,4 +14,6 @@ message("--- Iterating frontend tests")
 add_subdirectory(frontend)
 message("--- Iterating domain tests")
 add_subdirectory(domain)
+message("--- Iterating application tests")
+add_subdirectory(application)
 

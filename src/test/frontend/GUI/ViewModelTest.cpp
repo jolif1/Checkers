@@ -1,7 +1,6 @@
 #include <frontend/GUI/model/ViewModel.h>
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include <QTableView>
 
 namespace test::frontend::gui {
     using domain::Checker;
