@@ -27,7 +27,7 @@ namespace application::adapters
 
     void LocalAdapter::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
     {
-
+        mLobby->getGame()->requestMove( pChecker, pNewPos );
     }
 
     void LocalAdapter::remove( const domain::CheckerPtr& pChecker )

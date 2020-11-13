@@ -12,16 +12,18 @@ namespace domain
          * @brief Accessors
          */
         ///@{
-        int getX() const { return mX; }
-        int getY() const { return mY; }
+        int getRow() const { return mRow; }
+        int getCol() const { return mCol; }
         ///@}
 
     private:
-        int mX;
-        int mY;
+        int mRow;
+        int mCol;
     };
 
     bool operator==( const domain::Position& lhs, const domain::Position& rhs );
     bool operator!=( const domain::Position& lhs, const domain::Position& rhs );
     bool operator<( const domain::Position& lhs, const domain::Position& rhs );
+    Position operator-( const domain::Position& lhs, const domain::Position& rhs );
+    Position operator+( const domain::Position& lhs, const domain::Position& rhs );
 }

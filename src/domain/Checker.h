@@ -9,25 +9,26 @@ namespace domain
     class Checker
     {
     public:
-        enum class Team
-        {
-            White,
-            Black
-        };
+        enum class Team { White, Black };
+        enum class Rank { Peon, King };
 
         Checker( const Position& pPos, const Team& pTeam );
 
         /**
-         * @brief Accessors
+         * @brief Getters & Setters
          */
         ///@{
         Team        getTeam()       const { return mTeam; }
         Position    getPosition()   const { return mPosition; }
+        Rank        getRank()       const { return mRank; }
+
+        void        setRank( Rank pRank ) { mRank = pRank; }
         ///@}
 
     private:
-        Position    mPosition;
-        Team        mTeam;
+        Position    mPosition   ;
+        Team        mTeam       ;
+        Rank        mRank       { Rank::Peon };
     };
 
     typedef std::shared_ptr< Checker > CheckerPtr;

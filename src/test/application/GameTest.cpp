@@ -34,19 +34,11 @@ namespace application::test
             mMockFactory    = std::static_pointer_cast<MockFactory>( mFactory ).get();
         }
 
-        GamePtr             mGame;
-        CheckerFactoryPtr   mFactory;
-        MockFactory*        mMockFactory;
-    };
+        GamePtr                 mGame;
+        CheckerFactoryPtr       mFactory;
+        MockFactory*            mMockFactory;
 
-    TEST_F( GameTest, helloTest )
-    {
-        ASSERT_TRUE( true );
-    }
-
-    TEST_F( GameTest, newgame )
-    {
-        std::set<CheckerPtr> lExpectedCheckers
+        std::set<CheckerPtr>    mExpecte5x5dCheckers
         {
             std::make_shared<Checker>( Position( 0, 1 ), Checker::Team::Black ),
             std::make_shared<Checker>( Position( 0, 3 ), Checker::Team::Black ),
@@ -73,12 +65,33 @@ namespace application::test
             std::make_shared<Checker>( Position( 7, 4 ), Checker::Team::White ),
             std::make_shared<Checker>( Position( 7, 6 ), Checker::Team::White )
         };
+    };
 
-        ASSERT_TRUE( !lExpectedCheckers.empty() );
+    TEST_F( GameTest, helloTest )
+    {
+        ASSERT_TRUE( true );
+    }
 
-        for( CheckerPtr lChecker : lExpectedCheckers )
+    TEST_F( GameTest, newgame_5x5 )
+    {
+        ASSERT_TRUE( !mExpecte5x5dCheckers.empty() );
+
+        for( CheckerPtr lChecker : mExpecte5x5dCheckers )
             EXPECT_CALL( *mMockFactory, createChecker( lChecker->getPosition(), lChecker->getTeam() ) ).WillOnce( Return( lChecker ) );
 
         mGame->newGame();
+    }
+
+    TEST_F( GameTest, validMoves )
+    {
+        ASSERT_TRUE( !mExpecte5x5dCheckers.empty() );
+
+        for( CheckerPtr lChecker : mExpecte5x5dCheckers )
+            EXPECT_CALL( *mMockFactory, createChecker( lChecker->getPosition(), lChecker->getTeam() ) ).WillOnce( Return( lChecker ) );
+
+        mGame->newGame();
+
+        //Try to move a checker onto another one --> expect failure
+        EXPECT_ANY_THROW( mGame->requestMove( std::make_shared<Checker>( Position( 2, 1 ), Checker::Team::Black ), Position( 2, 3 ) ) );
     }
 }

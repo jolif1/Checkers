@@ -10,7 +10,7 @@ namespace frontend::gui
     public:
         Board( QWidget* pParent = nullptr );
 
-
+    protected:
         void resizeEvent(QResizeEvent* pEvent) override;
 
     private:

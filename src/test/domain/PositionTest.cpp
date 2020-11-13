@@ -22,14 +22,14 @@ namespace domain::test
         // Test standard constructor
         Position lPos { lx, ly };
 
-        EXPECT_EQ( lx, lPos.getX() );
-        EXPECT_EQ( ly, lPos.getY() );
+        EXPECT_EQ( lx, lPos.getRow() );
+        EXPECT_EQ( ly, lPos.getCol() );
 
         // Test copy constructor
         Position lOtherPos( lPos );
 
-        EXPECT_EQ( lx, lOtherPos.getX() );
-        EXPECT_EQ( ly, lOtherPos.getY() );
+        EXPECT_EQ( lx, lOtherPos.getRow() );
+        EXPECT_EQ( ly, lOtherPos.getCol() );
     }
 
     TEST_F( PositionTest, comparison_operators )
@@ -83,5 +83,15 @@ namespace domain::test
         EXPECT_EQ( *it, l4 );
         it++;
         EXPECT_EQ( *it, l5 );
+    }
+
+    TEST_F( PositionTest, operator_minus )
+    {
+        Position Pos1 { 5, 8 };
+        Position Pos2 { 3, 2 };
+        Position Pos3 { Pos1 - Pos2 };
+
+        ASSERT_EQ( Pos3.getRow(), 2 );
+        ASSERT_EQ( Pos3.getCol(), 6 );
     }
 }

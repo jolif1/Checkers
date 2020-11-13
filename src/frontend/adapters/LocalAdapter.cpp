@@ -20,6 +20,7 @@ namespace frontend::adapters
     void LocalAdapter::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
     {
         /* Called from frontend --> going to the app layer */
+        mAppAdapter->requestMove( pChecker, pNewPos );
     }
 
     void LocalAdapter::move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
