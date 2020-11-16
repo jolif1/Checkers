@@ -5,7 +5,7 @@ namespace domain
     class Position
     {
     public:
-        Position( int x, int y );
+        Position( int pRow, int pCol );
         Position( const Position& pOther );
 
         /**
@@ -14,6 +14,13 @@ namespace domain
         ///@{
         int getRow() const { return mRow; }
         int getCol() const { return mCol; }
+        ///@}
+
+        /**
+         * @brief operators
+         */
+        ///@{
+        Position& operator/( int den );
         ///@}
 
     private:

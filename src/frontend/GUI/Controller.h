@@ -16,6 +16,8 @@ namespace frontend::gui
 
         void show() override;
         void add( const domain::CheckerPtr& pChecker ) override;
+        void move( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos ) override;
+        void remove( const domain::CheckerPtr& pChecker ) override;
 
     private:
         std::shared_ptr<MainWindow> mMainWindow;

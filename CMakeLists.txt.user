@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.1, 2020-11-01T13:34:04. -->
+<!-- Written by QtCreator 4.13.1, 2020-11-16T20:09:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -65,17 +65,23 @@
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:GameTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:helloTest">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:invalidMoves">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:jumpMoves">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:newgame_5x5">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/application/GameTest.cpp:validMoves">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:PositionTest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:comparison_operators">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:constructors_and_getters">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/domain/PositionTest.cpp:operator_minus">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/BoardCellDelegateTest.cpp:BoardCellDelegateTest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/BoardCellDelegateTest.cpp:HelloTest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/ViewModelTest.cpp:HelloTest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/ViewModelTest.cpp:ViewModelTest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/ViewModelTest.cpp:add_checker_and_data">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/ViewModelTest.cpp:movetest">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/GUI/ViewModelTest.cpp:selection_test">Checked</value>
-    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/adapters/LocalAdapterTest.cpp:LocalAdapterTest">Checked</value>
-    <value type="Qt::CheckState" key="C:/Users/fjoli/Documents/work/Offline_Workzone/Qt_trials/Checkers/src/test/frontend/adapters/LocalAdapterTest.cpp:newgame">Checked</value>
    </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>

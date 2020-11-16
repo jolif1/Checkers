@@ -15,7 +15,7 @@ namespace application::core
          */
         ///@{
         void newGame();
-        void requestMove(  const domain::CheckerPtr& pChecker, const domain::Position& pNewPos );
+        void requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos );
         ///@}
 
     private:

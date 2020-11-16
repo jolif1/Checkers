@@ -26,12 +26,14 @@ namespace frontend
          */
         ///@{
         virtual void add( const domain::CheckerPtr& pChecker ) = 0;
+        virtual void move( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos ) = 0;
+        virtual void remove( const domain::CheckerPtr& pChecker ) = 0;
         ///@}
 
     protected:
         communication::IAdapterPtr mAdapter;
 
-        void requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos );
+        void requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos );
         void requestNewGame();
 
     private:

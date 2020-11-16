@@ -12,8 +12,8 @@ namespace frontend::adapters
         LocalAdapter( const IFrontendPtr& pFrontend );
 
         void add( const domain::CheckerPtr& pChecker )      override;
-        void requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )     override;
-        void move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )  override;
+        void requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )     override;
+        void move( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )  override;
         void remove( const domain::CheckerPtr& pChecker )   override;
 
         void newGame() override;

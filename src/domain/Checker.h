@@ -22,7 +22,8 @@ namespace domain
         Position    getPosition()   const { return mPosition; }
         Rank        getRank()       const { return mRank; }
 
-        void        setRank( Rank pRank ) { mRank = pRank; }
+        void        setRank( Rank pRank )               { mRank = pRank; }
+        void        setPosition( const Position& pPos ) { mPosition = pPos; }
         ///@}
 
     private:

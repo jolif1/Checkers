@@ -8,7 +8,7 @@ namespace application::core
     {
     public:
         virtual void onAdded( const domain::CheckerPtr& pChecker ) = 0;
-        virtual void onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos ) = 0;
+        virtual void onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos ) = 0;
         virtual void onRemoved( const domain::CheckerPtr& pChecker ) = 0;
     };
 }

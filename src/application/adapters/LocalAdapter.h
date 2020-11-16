@@ -20,10 +20,10 @@ namespace application::adapters
          */
         ///@{
         void add( const domain::CheckerPtr& pChecker )                                          override;
-        void move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )        override;
+        void move( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )        override;
         void newGame()                                                                          override;
         void remove( const domain::CheckerPtr& pChecker )                                       override;
-        void requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos ) override;
+        void requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )    override;
         ///@}
 
         /**
@@ -31,7 +31,7 @@ namespace application::adapters
          */
         ///@{
         void onAdded( const domain::CheckerPtr& pChecker )                                  override;
-        void onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos ) override;
+        void onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos ) override;
         void onRemoved( const domain::CheckerPtr& pChecker )                                override;
         ///@}
 

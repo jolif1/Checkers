@@ -14,10 +14,10 @@ namespace application::core
             lObserver->onAdded( pChecker );
     }
 
-    void IGame::moved( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void IGame::moved( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )
     {
         for( auto lObserver : mObservers )
-            lObserver->onMoved( pChecker, pNewPos );
+            lObserver->onMoved( pChecker, pOldPos );
     }
 
     void IGame::removed( const domain::CheckerPtr& pChecker )

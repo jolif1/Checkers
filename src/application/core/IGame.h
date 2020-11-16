@@ -29,7 +29,7 @@ namespace application::core
          */
         ///@{
         void added( const domain::CheckerPtr& pChecker );
-        void moved( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos );
+        void moved( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos );
         void removed( const domain::CheckerPtr& pChecker );
         ///@}
 

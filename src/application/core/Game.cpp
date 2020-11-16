@@ -1,5 +1,6 @@
 #include "Game.h"
 
+#include <cmath>
 #include <domain/Board.h>
 #include <set>
 
@@ -45,9 +46,53 @@ namespace application::core
         }
     }
 
-    void Game::requestMove(  const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void Game::requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )
     {
-        validateMove( pChecker, pNewPos );
+        std::string lErrMsg;
+        auto        lCheckerIt { mCheckers.find( pOldPos ) };
+        CheckerPtr  lChecker { nullptr };
+
+        try
+        {
+            if( mCheckers.end() == lCheckerIt )
+                throw std::runtime_error("There's no checkers at the given initial position!");
+
+            lChecker = lCheckerIt->second;
+            validateMove( lChecker, pNewPos ); //TODO: pass Position* optional. If not NULL, fill it when computing jump
+        }
+        catch ( std::runtime_error& ex )
+        {
+            lErrMsg = ex.what();
+        }
+
+        if( lErrMsg.empty() )
+        {
+            // Remove any checker that may have been jumped
+            if( std::abs( lChecker->getPosition().getRow() - pNewPos.getRow() ) == 2 )
+            {
+                int         lMidRow         { ( lChecker->getPosition().getRow() + pNewPos.getRow() ) / 2 };
+                int         lMidCol         { ( lChecker->getPosition().getCol() + pNewPos.getCol() ) / 2 };
+                Position    lJumpedPos      { lMidRow, lMidCol };
+                auto        lRemovedChecker { mCheckers.at( lJumpedPos ) };
+
+                mCheckers.erase( lJumpedPos );
+                removed( lRemovedChecker );
+            }
+
+            // Move the checker
+            auto lOldPos { lChecker->getPosition() };
+            auto lNode { mCheckers.extract( lOldPos ) };
+
+            lNode.key() = pNewPos;
+            lChecker->setPosition( pNewPos );
+            mCheckers.insert( std::move( lNode ) );
+
+            moved( lChecker, lOldPos );
+        }
+        else
+        {
+            //notify the frontend ?
+        }
     }
 
     std::set<Position> computeNeighbors( const domain::CheckerPtr& pChecker )
@@ -85,7 +130,6 @@ namespace application::core
 
         // We assume that the frontend is smart enough not to provide a new position outside of the board (like [-1, 3])
         // We assume that the checker is indeed at the given position.
-        bool lError { false };
 
         //Check for valid position
         std::set<Position>  lValidPositions      { computeNeighbors( pChecker ) };
@@ -100,31 +144,35 @@ namespace application::core
             if( Checker::Team::White == pChecker->getTeam() )  // Checker white
             {
                 //Remove bottom positions (neighbor.row > checker.row)
-                auto lLeftIt = lValidPositions.find( pChecker->getPosition() + lTopLeftDelta );
-                auto lRightIt = lValidPositions.find( pChecker->getPosition() + lTopRightDelta );
+                auto lLeftIt = lValidPositions.find( pChecker->getPosition() + lBotLeftDelta );
+                auto lRightIt = lValidPositions.find( pChecker->getPosition() + lBotRightDelta );
 
-                lValidPositions.erase( lLeftIt );
-                lValidPositions.erase( lRightIt );
+                if( lValidPositions.end() != lLeftIt )
+                    lValidPositions.erase( lLeftIt );
+                if( lValidPositions.end() != lLeftIt )
+                    lValidPositions.erase( lRightIt );
             }
             else // Checker black
             {
                 //Remove top positions (neighbor.row < checker.row)
-                auto lLeftIt = lValidPositions.find( pChecker->getPosition() + lBotLeftDelta );
-                auto lRightIt = lValidPositions.find( pChecker->getPosition() + lBotRightDelta );
+                auto lLeftIt = lValidPositions.find( pChecker->getPosition() + lTopLeftDelta );
+                auto lRightIt = lValidPositions.find( pChecker->getPosition() + lTopRightDelta );
 
-                lValidPositions.erase( lLeftIt );
-                lValidPositions.erase( lRightIt );
+                if( lValidPositions.end() != lLeftIt )
+                    lValidPositions.erase( lLeftIt );
+                if( lValidPositions.end() != lRightIt )
+                    lValidPositions.erase( lRightIt );
             }
         }
 
         std::set<Position> lValidJumps;
-        for( auto lValidPosIt = lValidPositions.begin(); lValidPosIt != lValidPositions.end(); lValidPosIt++ )
+        for( auto lValidPosIt = lValidPositions.begin(); lValidPosIt != lValidPositions.end();  )
         {
             auto it = mCheckers.find( *lValidPosIt );
 
             if( it != mCheckers.end() ) // A checker is present on this position
             {
-                lValidPositions.erase( lValidPosIt );
+                lValidPosIt = lValidPositions.erase( lValidPosIt );
 
                 if( pChecker->getTeam() != it->second->getTeam() )
                 {
@@ -144,7 +192,7 @@ namespace application::core
             }
             else // The cell is empty --> valid move
             {
-
+                lValidPosIt++;
             }
         }
 

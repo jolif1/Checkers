@@ -17,20 +17,21 @@ namespace frontend::adapters
         mFrontend->add( pChecker );
     }
 
-    void LocalAdapter::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void LocalAdapter::requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )
     {
         /* Called from frontend --> going to the app layer */
-        mAppAdapter->requestMove( pChecker, pNewPos );
+        mAppAdapter->requestMove( pOldPos, pNewPos );
     }
 
-    void LocalAdapter::move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void LocalAdapter::move( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )
     {
-        /* Called from the app or comm layer --> going to the frontend */
+        mFrontend->move( pChecker, pOldPos );
     }
 
-    void LocalAdapter::remove( [[maybe_unused]] const domain::CheckerPtr& pChecker )
+    void LocalAdapter::remove( const domain::CheckerPtr& pChecker )
     {
         /* frontend won't ever call this */
+        mFrontend->remove( pChecker );
     }
 
     void LocalAdapter::newGame()

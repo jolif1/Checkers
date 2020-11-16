@@ -25,6 +25,8 @@ namespace frontend::gui
          */
         ///@{
         void addChecker( const domain::CheckerPtr& pPtr );
+        void move( const domain::Position& pOldPos, const domain::Position& pNewPos );
+        void remove( const domain::Position& pToRemove );
         ///@}
 
         /**
@@ -38,7 +40,7 @@ namespace frontend::gui
         ///@}
 
     signals:
-        void requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos );
+        void requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos );
         void requestPossibleMoves( const domain::Position& pCheckerPos );
 
     private:

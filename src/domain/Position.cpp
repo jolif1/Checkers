@@ -2,8 +2,8 @@
 
 namespace domain
 {
-    Position::Position( int x, int y )
-        : mRow{ x }, mCol{ y }
+    Position::Position( int pRow, int pCol )
+        : mRow{ pRow }, mCol{ pCol }
     {
 
     }
@@ -12,6 +12,14 @@ namespace domain
         : Position( pOther.getRow(), pOther.getCol() )
     {
 
+    }
+
+    Position& Position::operator/( int den )
+    {
+        mCol = mCol / den;
+        mRow = mRow / den;
+
+        return *this;
     }
 
     bool operator==( const domain::Position& lhs, const domain::Position& rhs )

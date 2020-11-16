@@ -20,14 +20,14 @@ namespace application::adapters
         assert(false);
     }
 
-    void LocalAdapter::move( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void LocalAdapter::move(const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )
     {
         assert(false);
     }
 
-    void LocalAdapter::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void LocalAdapter::requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )
     {
-        mLobby->getGame()->requestMove( pChecker, pNewPos );
+        mLobby->getGame()->requestMove( pOldPos, pNewPos );
     }
 
     void LocalAdapter::remove( const domain::CheckerPtr& pChecker )
@@ -45,9 +45,9 @@ namespace application::adapters
         mAdapter->add( pChecker );
     }
 
-    void LocalAdapter::onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void LocalAdapter::onMoved( const domain::CheckerPtr& pChecker, const domain::Position& pOldPos )
     {
-        mAdapter->move( pChecker, pNewPos );
+        mAdapter->move( pChecker, pOldPos );
     }
 
     void LocalAdapter::onRemoved( const domain::CheckerPtr& pChecker )

@@ -26,6 +26,24 @@ namespace frontend::gui
         endResetModel();
     }
 
+    void ViewModel::move( const domain::Position& pOldPos, const domain::Position& pNewPos )
+    {
+        beginResetModel();
+        auto it = mCheckers.find( pOldPos );
+        Q_ASSERT( mCheckers.end() != it );
+        auto lNode = mCheckers.extract( it );
+        lNode.key() = pNewPos;
+        mCheckers.insert( std::move( lNode ) );
+        endResetModel();
+    }
+
+    void ViewModel::remove( const domain::Position& pToRemove )
+    {
+        beginResetModel();
+        mCheckers.erase( pToRemove );
+        endResetModel();
+    }
+
     int ViewModel::rowCount( [[maybe_unused]] const QModelIndex &parent ) const
     {
         return Board::kNumberOfRows;
@@ -80,7 +98,7 @@ namespace frontend::gui
             if( mCheckers.end() != lCheckerIt )
             {
                 lCheckerMoved = true;
-                emit requestMove( lCheckerIt->second, lNewPos );
+                emit requestMove( lCheckerIt->first, lNewPos );
             }
         }
 

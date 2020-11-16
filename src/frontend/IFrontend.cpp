@@ -2,9 +2,9 @@
 
 namespace frontend
 {
-    void IFrontend::requestMove( const domain::CheckerPtr& pChecker, const domain::Position& pNewPos )
+    void IFrontend::requestMove( const domain::Position& pOldPos, const domain::Position& pNewPos )
     {
-        mAdapter->requestMove( pChecker, pNewPos );
+        mAdapter->requestMove( pOldPos, pNewPos );
     }
 
     void IFrontend::requestNewGame()
